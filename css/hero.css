@@ -51,7 +51,8 @@
 
     color: var(--purple);
 
-    letter-spacing: 5px;
+    letter-spacing:3px;
+    text-align:center;
 
     font-family: var(--font-body);
     font-weight: 600;
@@ -69,7 +70,7 @@
 
     font-family: "American-Scribe";
 
-    font-size: 50px;
+    font-size:clamp(30px,8vw,50px);
 
 }
 .cursor{
@@ -197,5 +198,25 @@
     transform:translateY(-4px);
 
     box-shadow:0 14px 30px rgba(252,150,214,.28);
+
+}
+
+@media(max-width:768px){
+
+.hero-menu{
+
+    width:100%;
+
+}
+
+.hero-btn{
+
+    width:100%;
+
+    max-width:320px;
+
+    margin:auto;
+
+}
 
 }
