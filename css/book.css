@@ -12,7 +12,7 @@
 
     margin:20px auto 20px;
 
-    color:#666; font-weight:400; font-size: 18px;
+    color:#666; font-weight:400; font-size:clamp(16px,4vw,18px);
 
     line-height:1.8;
 
@@ -54,7 +54,7 @@
 
     line-height:1;
 
-    font-size:50px;
+    font-size:clamp(32px,8vw,50px);
 
     font-family:American-Scribe;
 
