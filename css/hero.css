@@ -187,8 +187,6 @@
 
     transition:.3s;
 
-    box-shadow:0 8px 24px rgba(140,128,254,.18);
-
 }
 
 .hero-btn:hover{
@@ -196,8 +194,6 @@
     background:var(--pink);
 
     transform:translateY(-4px);
-
-    box-shadow:0 14px 30px rgba(252,150,214,.28);
 
 }
 
