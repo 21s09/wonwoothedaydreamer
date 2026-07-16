@@ -1,0 +1,201 @@
+#hero{
+
+    min-height:100dvh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 20px;
+
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100dvh;
+
+}
+
+.hero-content h1 {
+
+    font-size: 80px;
+    letter-spacing: 0;
+
+    margin: 10px 0;
+
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-style: italic;
+
+    color: var(--purple);
+
+}
+
+.subtitle {
+
+    animation: fadeUp 1s ease .2s both;
+
+    color: var(--purple);
+
+    letter-spacing: 5px;
+
+    font-family: var(--font-body);
+    font-weight: 600;
+
+    margin-bottom: 5px;
+
+}
+
+.description {
+
+    color: var(--pink);
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    font-family: "American-Scribe";
+
+    font-size: 50px;
+
+}
+.cursor{
+
+    color:var(--pink);
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+
+.hero-content button {
+
+    padding: 16px 48px;
+
+    background: var(--purple);
+
+    color: var(--white);
+
+    border: none;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+}
+
+.hero-content button:hover {
+
+    background: var(--pink);
+
+    transform: translateY(-3px);
+
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.hero-logo {
+
+    width: 500px;
+    max-width: 90%;
+
+    display: block;
+
+    margin: 0 auto;
+
+    animation:
+        fadeUp .8s ease .2s both,
+        float 5s ease-in-out infinite;
+
+}
+.hero-header{
+
+    width:min(700px, 90vw);
+
+    aspect-ratio:16/7;
+
+    object-fit:cover;
+
+    border-radius:24px;
+
+    margin:24px auto;
+
+}
+
+.hero-menu{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-top:10px;
+
+}
+
+.hero-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px 30px;
+
+    background:var(--purple);
+
+    color:var(--white);
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    font-family:var(--font-title);
+
+    font-weight:600; font-style:italic; font-size:20px;
+
+    transition:.3s;
+
+    box-shadow:0 8px 24px rgba(140,128,254,.18);
+
+}
+
+.hero-btn:hover{
+
+    background:var(--pink);
+
+    transform:translateY(-4px);
+
+    box-shadow:0 14px 30px rgba(252,150,214,.28);
+
+}

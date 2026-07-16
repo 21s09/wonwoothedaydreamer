@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "American-Scribe";
+    src: url("../assets/fonts/American-Scribe.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{
+
+    --font-title: "Playfair", serif;
+    --font-body: "Google Sans", sans-serif;
+    
+--font-body:"Google Sans";
+    --font-weight: 700;
+    --font-style: normal;
+
+    --bg: #fffbe4;
+
+    --purple: #8c80fe;
+
+    --orange: #f8d014;
+
+    --white: #FFFFFF;
+
+    --gray: #666;
+    
+    --pink: #fc96d6;
+
+    --container: 1200px;
+
+    --transition: .35s ease;
+
+
+    /* Layout */
+    --container:1200px;
+
+    /* Transition */
+    --transition:.35s ease;
+
+
+}
+
