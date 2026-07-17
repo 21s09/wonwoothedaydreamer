@@ -11,6 +11,7 @@
     color: var(--white);
 }
 .footer-credit a{
+    font-family: Playfair Display;
     color:inherit;
     text-decoration:none;
     transition:.25s;
