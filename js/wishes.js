@@ -103,36 +103,59 @@ wishList.innerHTML += `
 });
 
 }
+const emojis = [
+"😀","😁","😂","🤣","😊","😍","🥰","😘","🥹","😭",
+"😎","🤩","🤭","🤗","🤍","🩷","❤️","💜","💙","💚",
+"🫶","👏","👍","🙏","💌","💐","🌸","🌷","🌼","🌻",
+"🌹","🍀","☁️","⭐","✨","🌙","🎂","🎉","🎁","🎈",
+"💎","🐱","🐶","🦊","🐻","🧸","🍓","🍑","🍒","🥐",
+"🎵","🎶","📸","📖","🕊️","🦋","🌈","🌺","🌿","🤍"
+];
 
 const emojiBtn = document.getElementById("emojiBtn");
 const picker = document.getElementById("emojiPicker");
 const textarea = document.getElementById("wishMessage");
 
-emojiBtn.addEventListener("click", (e) => {
+emojis.forEach(emoji=>{
+
+    const span=document.createElement("span");
+
+    span.className="emoji-item";
+
+    span.textContent=emoji;
+
+    span.onclick=()=>{
+
+        const start=textarea.selectionStart;
+        const end=textarea.selectionEnd;
+
+        textarea.setRangeText(
+            emoji,
+            start,
+            end,
+            "end"
+        );
+
+        textarea.focus();
+
+        picker.style.display="none";
+
+    };
+
+    picker.appendChild(span);
+
+});
+
+emojiBtn.onclick=(e)=>{
+
     e.stopPropagation();
 
-    picker.style.display =
-        picker.style.display === "block"
-            ? "none"
-            : "block";
-});
+    picker.style.display=
+        picker.style.display==="block"
+        ? "none"
+        : "block";
 
-picker.addEventListener("emoji-click", (event) => {
-
-    const emoji = event.detail.unicode;
-
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-
-    textarea.setRangeText(
-        emoji,
-        start,
-        end,
-        "end"
-    );
-
-    textarea.focus();
-});
+};
 
 document.addEventListener("click",(e)=>{
 
