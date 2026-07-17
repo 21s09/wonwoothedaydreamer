@@ -115,7 +115,7 @@ grid-template-columns:1fr;
 }
 
 .footer-credit a:hover{
-    color:#ffffff;
+    color:var(purple);
     opacity:.8;
 }
 
