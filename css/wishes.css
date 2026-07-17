@@ -378,7 +378,7 @@
 
     display:none;
 
-    grid-template-columns:repeat(7,36px);
+    grid-template-columns:repeat(5,36px);
     gap:6px;
 
     padding:12px;
