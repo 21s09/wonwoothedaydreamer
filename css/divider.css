@@ -28,3 +28,8 @@
         width:100%;
     }
 }
+@media (max-width: 768px){
+    .section-divider img{
+        width:100% !important;
+    }
+}
