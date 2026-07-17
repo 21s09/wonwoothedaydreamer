@@ -150,10 +150,10 @@ emojiBtn.onclick=(e)=>{
 
     e.stopPropagation();
 
-    picker.style.display=
-        picker.style.display==="block"
-        ? "none"
-        : "block";
+picker.style.display =
+picker.style.display==="grid"
+? "none"
+: "grid";
 
 };
 
