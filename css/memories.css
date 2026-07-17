@@ -93,4 +93,33 @@ grid-template-columns:1fr;
 
 }
 
+/*Footer*/
+
+.footer{
+    padding:50px 20px 30px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.1);
+    color: var(purple);
+    font-size:14px;
+    line-height:1.8;
+}
+
+.footer p{
+    margin:6px 0;
+}
+
+.footer-credit a{
+    color:inherit;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.footer-credit a:hover{
+    color:#ffffff;
+    opacity:.8;
+}
+
+.footer-copy{
+    font-size:12px;
+    opacity:.7;
 }
