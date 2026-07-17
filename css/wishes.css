@@ -361,35 +361,32 @@
 
 .message-wrapper{
     position: relative;
-    display: inline-block;
     width: 100%;
+    margin-bottom: 18px;
 }
 
 .message-wrapper textarea{
-    display: block;
     width: 100%;
-    margin-bottom: 0;      /* bỏ margin ở textarea */
+    margin-bottom: 0 !important;
     padding-right: 50px;
-    padding-bottom: 45px;
+    padding-bottom: 40px;
 }
 
 .emoji-icon{
     position: absolute;
-    right: 15px;
-    bottom: 15px;
+    right: 16px;
+    bottom: 14px;
+
+    z-index: 10;
 
     font-size: 20px;
+    color: var(--purple);
+
     opacity: .45;
     cursor: pointer;
-    user-select: none;
     transition: .2s;
 }
 
 .emoji-icon:hover{
-    opacity: .9;
-    transform: scale(1.15);
-}
-
-.message-wrapper{
-    margin-bottom: 18px;
+    opacity: 1;
 }
