@@ -359,32 +359,12 @@
 
 }
 
-.message-wrapper{
-    position:relative;
-}
-
-.emoji-icon{
-    position:absolute;
-    right:15px;
-    bottom:15px;
-
-    font-size:20px;
-    opacity:.45;
-    cursor:pointer;
-    z-index:20;
-
-    transition:.2s;
-}
-
-.emoji-icon:hover{
-    opacity:1;
-}
-
 .emoji-picker{
     position:absolute;
     right:0;
-    bottom:55px;
+    bottom:50px;
 
     display:none;
-    z-index:999;
+
+    z-index:9999;
 }
