@@ -1,169 +1,360 @@
-console.log("Wish JS loaded!");
+#wishList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-const sendWish = document.getElementById("sendWish");
+    gap: 40px;
+
+    max-width: 1380px;   /* 4 bông hoa */
+    margin: 60px auto 0;
+}
+
+.wish-card{
+    flex: 0 0 300px;     /* kích thước mỗi bông hoa */
+}
 
 
-if(sendWish){
+.wish-card {
 
-sendWish.addEventListener("click", async()=>{
+    aspect-ratio: 3 / 4;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    transition: transform 0.3s ease; aspect-ratio:519.8 / 506.5;
+
+}
 
 
-    const name = document.getElementById("wishName").value.trim();
+.wish-card:hover {
+    transform: translateY(-5px);
+}
 
-    const message = document.getElementById("wishMessage").value.trim();
+
+.wish-card h3 {
+    margin-bottom: -5px; margin-top: -10px;
+
+    font-family: var(--font-title);
+
+    color: var(--purple); text-align: center; font-style: italic;
+
+    font-size: 25px;
+}
 
 
-    if(!name || !message){
+.wish-card{
 
-        document.getElementById("wishStatus").innerText =
-        "Hãy cho mình biết tên và lời chúc của bồ nhé!";
+    position: relative;
 
-        return;
+    width: 300px; padding:70px;
 
+    aspect-ratio:519.8 / 506.5;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+    background: url("../assets/image/icon-02.svg")
+                center center / contain
+                no-repeat;
+
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,.08));
+
+    transition: .3s;
+}
+
+.wish-card:hover{
+
+    transform: translateY(-6px) scale(1.03);
+
+}
+
+.wish-content{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:120px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.wish-content{
+
+    width:65%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+.wish-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    width:70%;
+
+}
+
+.wish-card p {
+    position: relative;
+    padding: 0 15px;
+}
+
+
+@media (max-width:1200px){
+    #wishList{
+        grid-template-columns:repeat(3,1fr);
+        padding:0 100px;
     }
+}
 
-
-    const { error } = await supabaseClient
-        .from("wishes")
-        .insert([
-            {
-                name: name,
-                message: message
-            }
-        ]);
-
-
-
-    if(error){
-
-        console.error(error);
-
-        document.getElementById("wishStatus").innerText =
-        "Oops, chưa gửi được lời chúc, bồ thử lại nha.";
-
-    } else {
-
-
-        document.getElementById("wishStatus").innerText =
-        "Cảm ơn bồ đã trở thành một trong những bông hoa trên ngọn đồi của Wonwoo";
-
-
-        document.getElementById("wishName").value = "";
-        document.getElementById("wishMessage").value = "";
-        
-        loadWishes();
-
+@media (max-width:900px){
+    #wishList{
+        grid-template-columns:repeat(2,1fr);
+        padding:0 40px;
     }
+}
+
+@media (max-width:600px){
+    #wishList{
+        grid-template-columns:1fr;
+        padding:0 20px;
+    }
+}
+.wish-form {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 60px auto;
+
+    padding: 45px 50px;
+
+    background: var(--bg);
+
+    border: 1px solid var(--purple);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(80, 50, 20, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    box-sizing: border-box; box-align: center;
+}
 
 
-});
+/* input + textarea */
+
+.wish-form input,
+.wish-form textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 16px 18px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid var(--purple);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.8);
+
+    font-family: var(--font-body), sans-serif;
+
+    font-size: 15px;
+
+    color: var(--purple);
+
+    outline: none;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.wish-form input::placeholder,
+.wish-form textarea::placeholder {
+
+    color: #aaa;
+
+}
+
+
+
+.wish-form input:focus,
+.wish-form textarea:focus {
+
+    border-color: #b58b5a;
+
+    box-shadow:
+    0 0 0 4px rgba(181,139,90,0.15);
+
+}
+
+
+
+.wish-form textarea {
+
+    min-height: 160px;
+
+    resize: vertical;
+
+}
+
+
+
+/* button */
+
+.wish-form button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:var(--pink);
+
+    color: white;
+
+    font-family: var(--font-title);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.wish-form button:hover {
+
+    transform: translateY(-3px);
 
 
 }
-async function loadWishes(){
-
-    const { data, error } = await supabaseClient
-        .from("wishes")
-        .select("*")
-        .order("created_at", { ascending: false });
 
 
-    if(error){
 
-        console.error(error);
-        return;
+/* trạng thái gửi */
 
-    }
+#wishStatus {
 
+    text-align: center;
 
-    const wishList = document.getElementById("wishList");
+    margin-top: 20px;
 
-    wishList.innerHTML = "";
+    font-family: var(--font-heading), serif;
 
-
-    data.forEach(wish => {
-
-wishList.innerHTML += `
-<div class="wish-card">
-
-    <div class="wish-content">
-
-        <h3>${wish.name}</h3>
-
-        <span class="wish-divider">✦</span>
-
-        <div class="wish-message">
-            ${wish.message}
-        </div>
-
-    </div>
-
-</div>
-`;
-});
+    color: var(--purple);
 
 }
-const emojis = [
-"😀","😁","😂","🤣","😊","😍","🥰","😘","🥹","😭",
-"😎","🤩","🤭","🤗","🤍","🩷","❤️","💜","💙","💚",
-"🫶","👏","👍","🙏","💌","💐","🌸","🌷","🌼","🌻",
-"🌹","🍀","☁️","⭐","✨","🌙","🎂","🎉","🎁","🎈",
-"💎","🐱","🐶","🦊","🐻","🧸","🍓","🍑","🍒","🥐",
-"🎵","🎶","📸","📖","🕊️","🦋","🌈","🌺","🌿","🤍"
-];
 
-const emojiBtn = document.getElementById("emojiBtn");
-const picker = document.getElementById("emojiPicker");
-const textarea = document.getElementById("wishMessage");
+#wishes .section-title {
+    text-align: center;
+}
 
-emojis.forEach(emoji=>{
+#wishes .wish-form {
+    display: block;
+}
 
-    const span=document.createElement("span");
+.wish-form::before {
 
-    span.className="emoji-item";
+    content:"✦";
 
-    span.textContent=emoji;
+    display:block;
 
-    span.onclick=()=>{
+    text-align:center;
 
-        const start=textarea.selectionStart;
-        const end=textarea.selectionEnd;
+    font-size:50px;
 
-        textarea.setRangeText(
-            emoji,
-            start,
-            end,
-            "end"
-        );
+    color:var(--purple);
 
-        textarea.focus();
+    margin-bottom:15px;
 
-        picker.style.display="none";
+}
 
-    };
+.wish-divider {
 
-    picker.appendChild(span);
+    display:block;
 
-});
+    margin:0px 10px;
 
-emojiBtn.onclick=(e)=>{
+    font-size:20px;
 
-    e.stopPropagation();
+    color:var(--pink);
 
-    picker.style.display=
-        picker.style.display==="block"
-        ? "none"
-        : "block";
+    font-family:serif;
 
-};
+}
 
-document.addEventListener("click",(e)=>{
+.wish-message {
 
-    if(
-        !picker.contains(e.target) &&
-        !emojiBtn.contains(e.target)
-    ){
-        picker.style.display="none";
-    }
+    display: inline;
 
-});
+    text-align: center;
+
+    font-family: var(--font-title);
+
+    color: var(--purple);
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    white-space: pre-line; margin-top: -10px;
+
+}
