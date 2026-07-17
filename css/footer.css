@@ -40,10 +40,10 @@
     border-radius: 50%;
     cursor: pointer;
 
-    background: rgba(255,255,255,.85);
+    background: var(--purple);
     backdrop-filter: blur(10px);
 
-    color: var(--purple);
+    color: var(--white);
     font-size: 22px;
 
     transition: all .3s ease;
