@@ -359,7 +359,7 @@
 
 }
 
-.message-wrapper {
+.message-wrapper textarea{
     width:100%;
 
     padding-right:48px;
