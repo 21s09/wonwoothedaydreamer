@@ -44,7 +44,9 @@
     font-family:var(--font-body);
 
     margin-bottom:12px;
+    
     text-decoration: none;   /* Bỏ gạch chân */
+    
     transition: opacity 0.2s ease;
 }
 .section-tag hover {
