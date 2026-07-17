@@ -1,436 +1,169 @@
-#wishList{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+console.log("Wish JS loaded!");
 
-    gap: 40px;
+const sendWish = document.getElementById("sendWish");
 
-    max-width: 1380px;   /* 4 bông hoa */
-    margin: 60px auto 0;
-}
 
-.wish-card{
-    flex: 0 0 300px;     /* kích thước mỗi bông hoa */
-}
+if(sendWish){
 
+sendWish.addEventListener("click", async()=>{
 
-.wish-card {
 
-    aspect-ratio: 3 / 4;
+    const name = document.getElementById("wishName").value.trim();
 
-    display: flex;
+    const message = document.getElementById("wishMessage").value.trim();
 
-    flex-direction: column;
 
-    justify-content: center;
+    if(!name || !message){
 
-    align-items: center;
+        document.getElementById("wishStatus").innerText =
+        "Hãy cho mình biết tên và lời chúc của bồ nhé!";
 
-    text-align: center;
+        return;
 
-    padding: 25px;
-
-    transition: transform 0.3s ease; aspect-ratio:519.8 / 506.5;
-
-}
-
-
-.wish-card:hover {
-    transform: translateY(-5px);
-}
-
-
-.wish-card h3 {
-    margin-bottom: -5px; margin-top: -10px;
-
-    font-family: var(--font-title);
-
-    color: var(--purple); text-align: center; font-style: italic;
-
-    font-size: 25px;
-}
-
-
-.wish-card{
-
-    position: relative;
-
-    width: 300px; padding:70px;
-
-    aspect-ratio:519.8 / 506.5;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 50px;
-
-    box-sizing: border-box;
-
-    background: url("../assets/image/icon-02.svg")
-                center center / contain
-                no-repeat;
-
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,.08));
-
-    transition: .3s;
-}
-
-.wish-card:hover{
-
-    transform: translateY(-6px) scale(1.03);
-
-}
-
-.wish-content{
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:120px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-}
-
-.wish-content{
-
-    width:65%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
-
-.wish-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    width:70%;
-
-}
-
-.wish-card p {
-    position: relative;
-    padding: 0 15px;
-}
-
-
-@media (max-width:1200px){
-    #wishList{
-        grid-template-columns:repeat(3,1fr);
-        padding:0 100px;
     }
-}
 
-@media (max-width:900px){
-    #wishList{
-        grid-template-columns:repeat(2,1fr);
-        padding:0 40px;
+
+    const { error } = await supabaseClient
+        .from("wishes")
+        .insert([
+            {
+                name: name,
+                message: message
+            }
+        ]);
+
+
+
+    if(error){
+
+        console.error(error);
+
+        document.getElementById("wishStatus").innerText =
+        "Oops, chưa gửi được lời chúc, bồ thử lại nha.";
+
+    } else {
+
+
+        document.getElementById("wishStatus").innerText =
+        "Cảm ơn bồ đã trở thành một trong những bông hoa trên ngọn đồi của Wonwoo";
+
+
+        document.getElementById("wishName").value = "";
+        document.getElementById("wishMessage").value = "";
+        
+        loadWishes();
+
     }
-}
 
-@media (max-width:600px){
-    #wishList{
-        grid-template-columns:1fr;
-        padding:0 20px;
+
+});
+
+
+}
+async function loadWishes(){
+
+    const { data, error } = await supabaseClient
+        .from("wishes")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+
+    if(error){
+
+        console.error(error);
+        return;
+
     }
-}
-.wish-form {
-    width: 100%;
-    max-width: 650px;
-
-    margin: 60px auto;
-
-    padding: 45px 50px;
-
-    background: var(--bg);
-
-    border: 1px solid var(--purple);
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 20px 50px rgba(80, 50, 20, 0.08);
-
-    backdrop-filter: blur(12px);
-
-    box-sizing: border-box; box-align: center;
-}
 
 
-/* input + textarea */
+    const wishList = document.getElementById("wishList");
 
-.wish-form input,
-.wish-form textarea {
+    wishList.innerHTML = "";
 
-    width: 100%;
 
-    box-sizing: border-box;
+    data.forEach(wish => {
 
-    padding: 16px 18px;
+wishList.innerHTML += `
+<div class="wish-card">
 
-    margin-bottom: 18px;
+    <div class="wish-content">
 
-    border: 1px solid var(--purple);
+        <h3>${wish.name}</h3>
 
-    border-radius: 12px;
+        <span class="wish-divider">✦</span>
 
-    background: rgba(255,255,255,0.8);
+        <div class="wish-message">
+            ${wish.message}
+        </div>
 
-    font-family: var(--font-body), sans-serif;
+    </div>
 
-    font-size: 15px;
-
-    color: var(--purple);
-
-    outline: none;
-
-    transition: all 0.3s ease;
+</div>
+`;
+});
 
 }
+const emojis = [
+"😀","😁","😂","🤣","😊","😍","🥰","😘","🥹","😭",
+"😎","🤩","🤭","🤗","🤍","🩷","❤️","💜","💙","💚",
+"🫶","👏","👍","🙏","💌","💐","🌸","🌷","🌼","🌻",
+"🌹","🍀","☁️","⭐","✨","🌙","🎂","🎉","🎁","🎈",
+"💎","🐱","🐶","🦊","🐻","🧸","🍓","🍑","🍒","🥐",
+"🎵","🎶","📸","📖","🕊️","🦋","🌈","🌺","🌿","🤍"
+];
 
+const emojiBtn = document.getElementById("emojiBtn");
+const picker = document.getElementById("emojiPicker");
+const textarea = document.getElementById("wishMessage");
 
+emojis.forEach(emoji=>{
 
-.wish-form input::placeholder,
-.wish-form textarea::placeholder {
+    const span=document.createElement("span");
 
-    color: #aaa;
+    span.className="emoji-item";
 
-}
+    span.textContent=emoji;
 
+    span.onclick=()=>{
 
+        const start=textarea.selectionStart;
+        const end=textarea.selectionEnd;
 
-.wish-form input:focus,
-.wish-form textarea:focus {
+        textarea.setRangeText(
+            emoji,
+            start,
+            end,
+            "end"
+        );
 
-    border-color: #b58b5a;
+        textarea.focus();
 
-    box-shadow:
-    0 0 0 4px rgba(181,139,90,0.15);
+        picker.style.display="none";
 
-}
+    };
 
+    picker.appendChild(span);
 
+});
 
-.wish-form textarea {
+emojiBtn.onclick=(e)=>{
 
-    min-height: 160px;
+    e.stopPropagation();
 
-    resize: vertical;
+    picker.style.display=
+        picker.style.display==="block"
+        ? "none"
+        : "block";
 
-}
+};
 
+document.addEventListener("click",(e)=>{
 
+    if(
+        !picker.contains(e.target) &&
+        !emojiBtn.contains(e.target)
+    ){
+        picker.style.display="none";
+    }
 
-/* button */
-
-.wish-form button {
-
-    width: 100%;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 999px;
-
-    background:var(--pink);
-
-    color: white;
-
-    font-family: var(--font-title);
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    transition: all 0.3s ease;
-
-}
-
-
-
-.wish-form button:hover {
-
-    transform: translateY(-3px);
-
-
-}
-
-
-
-/* trạng thái gửi */
-
-#wishStatus {
-
-    text-align: center;
-
-    margin-top: 20px;
-
-    font-family: var(--font-heading), serif;
-
-    color: var(--purple);
-
-}
-
-#wishes .section-title {
-    text-align: center;
-}
-
-#wishes .wish-form {
-    display: block;
-}
-
-.wish-form::before {
-
-    content:"✦";
-
-    display:block;
-
-    text-align:center;
-
-    font-size:50px;
-
-    color:var(--purple);
-
-    margin-bottom:15px;
-
-}
-
-.wish-divider {
-
-    display:block;
-
-    margin:0px 10px;
-
-    font-size:20px;
-
-    color:var(--pink);
-
-    font-family:serif;
-
-}
-
-.wish-message {
-
-    display: inline;
-
-    text-align: center;
-
-    font-family: var(--font-title);
-
-    color: var(--purple);
-
-    font-size: 20px;
-
-    line-height: 1;
-
-    white-space: pre-line; margin-top: -10px;
-
-}
-
-.message-wrapper{
-    position: relative;
-}
-
-.emoji-icon{
-    position:absolute;
-    right:15px;
-    bottom:15px;
-
-    font-size:20px;
-    color:var(--purple);
-
-    opacity:.45;
-    cursor:pointer;
-    transition:.2s;
-    z-index:20;
-}
-
-.emoji-icon:hover{
-    opacity:1;
-}
-
-.emoji-picker{
-
-    position:absolute;
-
-    right:0;
-    bottom:55px;
-
-    width:280px;
-    max-height:220px;
-
-    overflow-y:auto;
-
-    display:none;
-
-    padding:12px;
-
-    border-radius:16px;
-
-    background:#fff;
-
-    border:1px solid rgba(0,0,0,.08);
-
-    box-shadow:0 12px 30px rgba(0,0,0,.15);
-
-    z-index:999;
-
-}
-
-.emoji-item{
-
-    display:inline-flex;
-
-    justify-content:center;
-    align-items:center;
-
-    width:38px;
-    height:38px;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-    border-radius:8px;
-
-    transition:.15s;
-}
-
-.emoji-item:hover{
-
-    background:#f3f3f3;
-    transform:scale(1.15);
-
-}
+});
