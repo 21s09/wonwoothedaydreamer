@@ -44,12 +44,16 @@
     font-family:var(--font-body);
 
     margin-bottom:12px;
-    
+}
+
+.section-tag a {
+    color: inherit;          /* Giữ nguyên màu chữ */
     text-decoration: none;   /* Bỏ gạch chân */
-    
     transition: opacity 0.2s ease;
 }
-.section-tag hover {
+
+.section-tag a:hover {
+    opacity: 0.7;            /* Hover hơi mờ đi */
     text-decoration: underline; /* Nếu muốn hiện gạch chân khi rê chuột */
 }
 .about-text h2{
