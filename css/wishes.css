@@ -417,14 +417,18 @@
 .emoji-icon{
     position:absolute;
 
-    right:18px;
-    bottom:30px;
+    right:16px;
+    top:16px;
 
-    font-size:18px;
+    font-size:20px;
+
+    color:var(--purple);
+
+    opacity:.45;
 
     cursor:pointer;
 
-    opacity:.45;
+    z-index:100;
 }
 
 .emoji-icon:hover{
