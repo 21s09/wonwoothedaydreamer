@@ -104,29 +104,27 @@ wishList.innerHTML += `
 
 }
 
-const picker = new EmojiButton();
+const picker = new EmojiMart.Picker({
+    theme: "light"
+});
 
-const emojiBtn = document.querySelector("#emojiBtn");
-const wishMessage = document.querySelector("#wishMessage");
+document.getElementById("emojiPicker").appendChild(picker);
+
+const pickerBox = document.getElementById("emojiPicker");
+const emojiBtn = document.getElementById("emojiBtn");
+const textarea = document.getElementById("wishMessage");
 
 emojiBtn.addEventListener("click", () => {
-    picker.togglePicker(emojiBtn);
+    pickerBox.style.display =
+        pickerBox.style.display === "block"
+            ? "none"
+            : "block";
 });
 
-picker.on("emoji", emoji => {
-    const start = wishMessage.selectionStart;
-    const end = wishMessage.selectionEnd;
+picker.addEventListener("emoji-select", (event) => {
 
-    wishMessage.setRangeText(
-        emoji,
-        start,
-        end,
-        "end"
-    );
+    textarea.value += event.detail.unicode;
 
-    wishMessage.focus();
+    textarea.focus();
+
 });
-
-
-loadWishes();
-
