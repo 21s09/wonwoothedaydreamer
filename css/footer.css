@@ -46,8 +46,6 @@
     color: var(--purple);
     font-size: 22px;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,.12);
-
     transition: all .3s ease;
 }
 
