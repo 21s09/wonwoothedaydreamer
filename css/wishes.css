@@ -410,3 +410,23 @@
 
     transform:rotate(45deg);
 }
+.message-wrapper textarea{
+    padding-right:50px;
+}
+
+.emoji-icon{
+    position:absolute;
+
+    right:18px;
+    bottom:30px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    opacity:.45;
+}
+
+.emoji-icon:hover{
+    opacity:1;
+}
