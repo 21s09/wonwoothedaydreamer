@@ -98,7 +98,7 @@ grid-template-columns:1fr;
 .footer{
     padding:50px 20px 30px;
     text-align:center;
-    color: var(purple);
+    color: var(--purple);
     font-size:16px;
     line-height:1.8; 
 }
@@ -114,7 +114,7 @@ grid-template-columns:1fr;
 }
 
 .footer-credit a:hover{
-    color:var(purple);
+    color:var(--purple);
     opacity:.8;
 }
 
