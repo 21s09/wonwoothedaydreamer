@@ -104,6 +104,29 @@ wishList.innerHTML += `
 
 }
 
+const picker = new EmojiButton();
+
+const emojiBtn = document.querySelector("#emojiBtn");
+const wishMessage = document.querySelector("#wishMessage");
+
+emojiBtn.addEventListener("click", () => {
+    picker.togglePicker(emojiBtn);
+});
+
+picker.on("emoji", emoji => {
+    const start = wishMessage.selectionStart;
+    const end = wishMessage.selectionEnd;
+
+    wishMessage.setRangeText(
+        emoji,
+        start,
+        end,
+        "end"
+    );
+
+    wishMessage.focus();
+});
+
 
 loadWishes();
 
