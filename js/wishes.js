@@ -167,3 +167,4 @@ document.addEventListener("click",(e)=>{
     }
 
 });
+loadWishes();
