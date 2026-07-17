@@ -20,24 +20,39 @@
     color:var(--purple);
     opacity:.8;
 }
-<script>
-const scrollTopBtn = document.getElementById("scrollTop");
-const scrollBottomBtn = document.getElementById("scrollBottom");
+.scroll-buttons{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
 
-scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-scrollBottomBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
-});
-</script>
+    z-index: 9999;
+}
 
-</body>
-</html>
+.scroll-buttons button{
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px);
+
+    color: var(--purple);
+    font-size: 22px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+
+    transition: all .3s ease;
+}
+
+.scroll-buttons button:hover{
+    transform: translateY(-3px);
+    background: var(--purple);
+    color: white;
+}
