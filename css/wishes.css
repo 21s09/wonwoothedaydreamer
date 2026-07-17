@@ -396,7 +396,7 @@
 
     position:absolute;
 
-    top:52px;
+    bottom:52px;
     right:0;
 
     width:300px;
@@ -423,7 +423,7 @@
 
     display:none;
 
-    grid-template-columns:repeat(6,1fr);
+    grid-template-columns:repeat(5,1fr);
 
     gap:6px;
 }
