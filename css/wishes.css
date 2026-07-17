@@ -360,10 +360,10 @@
 }
 
 .message-wrapper{
-    position: relative;
-    overflow: visible;
+    position:relative;
+    width:100%;
+    display:block;
 }
-
 .wish-form{
     overflow: visible;
 }
