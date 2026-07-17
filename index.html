@@ -25,7 +25,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <link rel="stylesheet" href="css/memories.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
-<script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 <body>
 
 <header>
@@ -205,12 +205,18 @@ placeholder="Tên của bồ">
 
 <div class="message-wrapper">
 
-   <textarea
+  <textarea
         id="wishMessage"
         placeholder="Lời chúc bồ dành cho Wonwoo"></textarea>
 
     <span id="emojiBtn" class="emoji-icon">
         <i class="fa-regular fa-face-smile"></i>
+    </span>
+
+    <emoji-picker
+        id="emojiPicker"
+        class="emoji-picker">
+    </emoji-picker>
     </span>
 
     <div id="emojiPicker" class="emoji-picker"></div>
@@ -282,8 +288,6 @@ Gửi!
 <script src="js/wishes.js"></script>
 
 <script src="js/memories.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4/dist/index.min.js"></script>
 
 </body>
 
