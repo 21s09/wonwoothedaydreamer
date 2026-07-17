@@ -361,21 +361,28 @@
 
 .message-wrapper{
     position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.message-wrapper textarea{
+    display: block;
+    width: 100%;
+    margin-bottom: 0;      /* bỏ margin ở textarea */
+    padding-right: 50px;
+    padding-bottom: 45px;
 }
 
 .emoji-icon{
     position: absolute;
-    right: 16px;
-    bottom: 16px;
+    right: 15px;
+    bottom: 15px;
 
-    font-size: 22px;
-    line-height: 1;
-
+    font-size: 20px;
     opacity: .45;
     cursor: pointer;
     user-select: none;
-
-    transition: .2s ease;
+    transition: .2s;
 }
 
 .emoji-icon:hover{
