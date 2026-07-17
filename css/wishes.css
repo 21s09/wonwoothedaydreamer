@@ -359,12 +359,78 @@
 
 }
 
-.emoji-picker{
+.message-wrapper{
+    position: relative;
+}
+
+.emoji-icon{
     position:absolute;
+    right:15px;
+    bottom:15px;
+
+    font-size:20px;
+    color:var(--purple);
+
+    opacity:.45;
+    cursor:pointer;
+    transition:.2s;
+    z-index:20;
+}
+
+.emoji-icon:hover{
+    opacity:1;
+}
+
+.emoji-picker{
+
+    position:absolute;
+
     right:0;
-    bottom:50px;
+    bottom:55px;
+
+    width:280px;
+    max-height:220px;
+
+    overflow-y:auto;
 
     display:none;
 
-    z-index:9999;
+    padding:12px;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    border:1px solid rgba(0,0,0,.08);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+    z-index:999;
+
+}
+
+.emoji-item{
+
+    display:inline-flex;
+
+    justify-content:center;
+    align-items:center;
+
+    width:38px;
+    height:38px;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    border-radius:8px;
+
+    transition:.15s;
+}
+
+.emoji-item:hover{
+
+    background:#f3f3f3;
+    transform:scale(1.15);
+
 }
