@@ -246,7 +246,7 @@
 
     min-height: 160px;
 
-    resize: vertical;
+    resize: none;
 
 }
 
@@ -362,8 +362,9 @@
 .message-wrapper textarea{
     width:100%;
 
-    padding-right:48px;
-    padding-bottom:18px;
+    padding:16px 50px 16px 18px;
+
+    min-height:160px;
 }
 .wish-form{
     overflow: visible;
@@ -424,22 +425,26 @@
     position:absolute;
 
     right:16px;
-    bottom:34px;
+    top:calc(100% - 42px);
 
-    width:28px;
-    height:28px;
+    transform:translateY(-100%);
+
+    width:24px;
+    height:24px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     font-size:18px;
+
     color:var(--purple);
 
     opacity:.45;
+
     cursor:pointer;
 
-    z-index:100;
+    z-index:10;
 }
 
 .emoji-icon:hover{
