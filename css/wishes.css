@@ -359,10 +359,11 @@
 
 }
 
-.message-wrapper{
-    position:relative;
+.message-wrapper textarea{
     width:100%;
-    display:block;
+
+    padding-right:48px;
+    padding-bottom:18px;
 }
 .wish-form{
     overflow: visible;
@@ -423,17 +424,26 @@
     position:absolute;
 
     right:16px;
-    top:16px;
+    bottom:34px;
 
-    font-size:20px;
+    width:28px;
+    height:28px;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:18px;
     color:var(--purple);
 
     opacity:.45;
-
     cursor:pointer;
 
     z-index:100;
+}
+
+.emoji-icon:hover{
+    opacity:1;
 }
 
 .emoji-icon:hover{
