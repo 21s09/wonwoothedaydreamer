@@ -2,7 +2,7 @@ body{
 
     background:var(--bg);
 
-    color:var(--white);
+    color:var(--grey);
 
     font-family:var(--font-body);
      overflow-x:hidden;
