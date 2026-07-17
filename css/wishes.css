@@ -43,7 +43,7 @@
 .wish-card h3 {
     margin-bottom: -5px; margin-top: -10px;
 
-    font-family: var(--font-title),East Sea Dokdo;
+    font-family: var(--font-title), East Sea Dokdo;
 
     color: var(--purple); text-align: center; font-style: italic;
 
@@ -268,7 +268,7 @@
 
     color: white;
 
-    font-family: var(--font-title),East Sea Dokdo;
+    font-family: var(--font-title), East Sea Dokdo;
 
     font-size: 20px;
 
@@ -347,7 +347,7 @@
 
     text-align: center;
 
-    font-family: var(--font-title);
+    font-family: var(--font-title), East Sea Dokdo;
 
     color: var(--purple);
 
