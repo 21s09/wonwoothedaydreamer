@@ -103,68 +103,7 @@ wishList.innerHTML += `
 });
 
 }
-const emojis = [
-"😀","😁","😂","🤣","😊","😍","🥰","😘","🥹","😭",
-"😎","🤩","🤭","🤗","🤍","🩷","❤️","💜","💙","💚",
-"🫶","👏","👍","🙏","💌","💐","🌸","🌷","🌼","🌻",
-"🌹","🍀","☁️","⭐","✨","🌙","🎂","🎉","🎁","🎈",
-"💎","🐱","🐶","🦊","🐻","🧸","🍓","🍑","🍒","🥐",
-"🎵","🎶","📸","📖","🕊️","🦋","🌈","🌺","🌿","🤍"
-];
 
-const emojiBtn = document.getElementById("emojiBtn");
-const picker = document.getElementById("emojiPicker");
-const textarea = document.getElementById("wishMessage");
 
-emojis.forEach(emoji=>{
-
-    const span=document.createElement("span");
-
-    span.className="emoji-item";
-
-    span.textContent=emoji;
-
-    span.onclick=()=>{
-
-        const start=textarea.selectionStart;
-        const end=textarea.selectionEnd;
-
-        textarea.setRangeText(
-            emoji,
-            start,
-            end,
-            "end"
-        );
-
-        textarea.focus();
-
-        picker.style.display="none";
-
-    };
-
-    picker.appendChild(span);
-
-});
-
-emojiBtn.onclick=(e)=>{
-
-    e.stopPropagation();
-
-picker.style.display =
-picker.style.display==="grid"
-? "none"
-: "grid";
-
-};
-
-document.addEventListener("click",(e)=>{
-
-    if(
-        !picker.contains(e.target) &&
-        !emojiBtn.contains(e.target)
-    ){
-        picker.style.display="none";
-    }
-
-});
 loadWishes();
+
