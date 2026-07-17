@@ -104,27 +104,43 @@ wishList.innerHTML += `
 
 }
 
-const picker = new EmojiMart.Picker({
-    theme: "light"
-});
-
-document.getElementById("emojiPicker").appendChild(picker);
-
-const pickerBox = document.getElementById("emojiPicker");
 const emojiBtn = document.getElementById("emojiBtn");
+const picker = document.getElementById("emojiPicker");
 const textarea = document.getElementById("wishMessage");
 
-emojiBtn.addEventListener("click", () => {
-    pickerBox.style.display =
-        pickerBox.style.display === "block"
+emojiBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    picker.style.display =
+        picker.style.display === "block"
             ? "none"
             : "block";
 });
 
-picker.addEventListener("emoji-select", (event) => {
+picker.addEventListener("emoji-click", (event) => {
 
-    textarea.value += event.detail.unicode;
+    const emoji = event.detail.unicode;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    textarea.setRangeText(
+        emoji,
+        start,
+        end,
+        "end"
+    );
 
     textarea.focus();
+});
+
+document.addEventListener("click",(e)=>{
+
+    if(
+        !picker.contains(e.target) &&
+        !emojiBtn.contains(e.target)
+    ){
+        picker.style.display="none";
+    }
 
 });
