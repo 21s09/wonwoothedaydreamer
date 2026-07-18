@@ -150,22 +150,22 @@ document.querySelectorAll(".read-more").forEach(btn => {
 });
 }
 
-const modal = document.getElementById("wishModal");
-const closeBtn = document.getElementById("closeWish");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (modal && closeBtn) {
+    const modal = document.getElementById("wishModal");
+    const closeBtn = document.getElementById("closeWish");
 
-    closeBtn.onclick = () => {
+    closeBtn.addEventListener("click", () => {
         modal.classList.remove("active");
-    };
+    });
 
-    modal.onclick = (e) => {
+    modal.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.classList.remove("active");
         }
-    };
+    });
 
-}
+});
 
 loadWishes();
 
