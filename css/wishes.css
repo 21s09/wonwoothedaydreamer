@@ -196,6 +196,7 @@ margin-top:-5px
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+
     width:60%;
     height:75%;
 
@@ -204,6 +205,7 @@ margin-top:-5px
     align-items:center;
 
     overflow:hidden;
+    padding-top:10px;
 }
 .modal-message-wrapper{
 
@@ -211,14 +213,15 @@ margin-top:-5px
 
     flex:1;
 
+    min-height:0;
+
     overflow-y:auto;
 
-    padding-right:8px;
+    padding:10px 8px 15px 0;
 
-    margin-top:0px;
+    margin-top:5px;
 
 }
-
 #modalName{
     margin:0 0 8px;
     font-family:var(--font-title), East Sea Dokdo;
