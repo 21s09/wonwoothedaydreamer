@@ -436,3 +436,123 @@
     cursor:pointer;
 
 }
+
+.wish-modal{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(38,26,50,.45);
+
+    backdrop-filter:blur(8px);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+.wish-modal.active{
+
+    display:flex;
+
+}
+
+/* bông hoa */
+.wish-modal-box{
+
+    width:min(820px,90vw);
+
+    aspect-ratio:519.8/506.5;
+
+    background:url("../assets/image/icon-02.svg")
+              center/contain
+              no-repeat;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transform:scale(.85);
+
+    opacity:0;
+
+    transition:.28s ease;
+
+}
+
+/* Khi mở */
+.wish-modal.active .wish-modal-box{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+/* Text */
+.modal-content{
+
+    width:55%;
+
+    height:58%;
+
+    overflow-y:auto;
+
+    text-align:center;
+
+    color:var(--purple);
+
+}
+
+#modalName{
+
+    font-family:var(--font-title);
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+#modalMessage{
+
+    white-space:pre-wrap;
+
+    line-height:1.6;
+
+    font-size:18px;
+
+}
+
+#closeWish{
+
+    position:absolute;
+
+    top:90px;
+
+    right:135px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#fff;
+
+    color:var(--purple);
+
+    cursor:pointer;
+
+    font-size:22px;
+
+}
