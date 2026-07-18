@@ -211,7 +211,7 @@ margin-top:-5px
     padding-top:0;
 }
 .modal-message-wrapper{
-
+scroll-padding-top:20px;
     width:100%;
 
     flex:1;
