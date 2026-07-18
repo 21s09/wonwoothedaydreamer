@@ -13,7 +13,29 @@ function createPreview(text, maxLength = 220) {
     }
 
     return {
-        preview: text.slice(0, maxLength) + "...",
+        function createPreview(text, maxLength = 180){
+
+    if(text.length <= maxLength){
+        return {
+            preview: text,
+            isLong: false
+        };
+    }
+
+    // cắt tới khoảng trắng cuối cùng
+    let preview = text.slice(0, maxLength);
+
+    const lastSpace = preview.lastIndexOf(" ");
+
+    if(lastSpace > 0){
+        preview = preview.slice(0, lastSpace);
+    }
+
+    return {
+        preview: preview + "...",
+        isLong: true
+    };
+}
         isLong: true
     };
 }
