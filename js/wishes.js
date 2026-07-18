@@ -152,3 +152,18 @@ document.querySelectorAll(".read-more").forEach(btn => {
 
 
 loadWishes();
+document.getElementById("closeWish").addEventListener("click", () => {
+
+    document.getElementById("wishModal").classList.remove("active");
+
+});
+
+document.getElementById("wishModal").addEventListener("click", e => {
+
+    if (e.target.id === "wishModal") {
+
+        e.currentTarget.classList.remove("active");
+
+    }
+
+});
