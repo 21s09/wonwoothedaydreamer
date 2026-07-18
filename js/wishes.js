@@ -33,7 +33,7 @@ async function loadWishes() {
     console.log("Hoàn thành");
 }
 
-function createPreview(text, maxLength = 180) {
+function createPreview(text, maxLength = 180)
 
     if (text.length <= maxLength) {
         return {
