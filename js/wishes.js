@@ -1,3 +1,15 @@
+async function loadWishes() {
+
+    console.log("loadWishes chạy");
+
+    const { data, error } = await supabaseClient
+        .from("wishes")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    console.log("data:", data);
+    console.log("error:", error);
+
 console.log("Wish JS loaded!");
 
 const sendWish = document.getElementById("sendWish");
