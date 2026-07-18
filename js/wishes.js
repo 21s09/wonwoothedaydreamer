@@ -10,25 +10,20 @@ async function loadWishes() {
     console.log("data:", data);
     console.log("error:", error);
 
-console.log("Wish JS loaded!");
-
-const sendWish = document.getElementById("sendWish");
-const wishList = document.getElementById("wishList");
-
-const modal = document.getElementById("wishModal");
-const modalName = document.getElementById("modalName");
-const modalMessage = document.getElementById("modalMessage");
-const closeBtn = document.getElementById("closeWish");
-
-
-function createPreview(text, maxLength = 180) {
-
-    if (text.length <= maxLength) {
-        return {
-            preview: text,
-            isLong: false
-        };
+    if (error) {
+        console.error(error);
+        return;
     }
+
+    wishList.innerHTML = "";
+
+    data.forEach(wish => {
+
+        wishList.appendChild(createWishCard(wish));
+
+    });
+
+}
 
     let preview = text.slice(0, maxLength);
 
