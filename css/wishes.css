@@ -72,11 +72,6 @@
     line-height:1;
     white-space:pre-line;
     word-break:break-word;
-   flex:1;
-
-    overflow:hidden;
-
-    display:block;
 }
 
 .read-more{
