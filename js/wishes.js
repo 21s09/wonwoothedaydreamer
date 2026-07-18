@@ -1,217 +1,173 @@
-async function loadWishes() {
-
-    console.log("loadWishes chạy");
-
-    const { data, error } = await supabaseClient
-        .from("wishes")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-    console.log("data:", data);
-    console.log("error:", error);
-
-    if (error) {
-        console.error(error);
-        return;
-    }
-
-    wishList.innerHTML = "";
-
-    data.forEach(wish => {
-
-        wishList.appendChild(createWishCard(wish));
-
-    });
-
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
 }
 
-    let preview = text.slice(0, maxLength);
-
-    const lastSpace = preview.lastIndexOf(" ");
-
-    if (lastSpace > 0) {
-        preview = preview.slice(0, lastSpace);
+function createPreview(text, maxLength = 220) {
+    if (text.length <= maxLength) {
+        return {
+            preview: text,
+            isLong: false
+        };
     }
 
     return {
-        preview: preview + "...",
+        preview: text.slice(0, maxLength) + "...",
         isLong: true
     };
 }
 
-function openModal(name, message) {
+console.log("Wish JS loaded!");
 
-    modalName.textContent = name;
+const sendWish = document.getElementById("sendWish");
 
-    modalMessage.innerHTML =
-        escapeHtml(message).replace(/\n/g, "<br>");
 
-    modal.classList.add("active");
+if(sendWish){
 
-}
+sendWish.addEventListener("click", async()=>{
 
-function closeModal() {
-
-    modal.classList.remove("active");
-
-}
-
-function createWishCard(wish) {
-
-    const result = createPreview(wish.message);
-
-    const card = document.createElement("div");
-    card.className = "wish-card";
-
-    const content = document.createElement("div");
-    content.className = "wish-content";
-
-    const title = document.createElement("h3");
-    title.textContent = wish.name;
-
-    const divider = document.createElement("span");
-    divider.className = "wish-divider";
-    divider.textContent = "✦";
-
-    const message = document.createElement("div");
-    message.className = "wish-message";
-    message.innerHTML =
-        escapeHtml(result.preview).replace(/\n/g, "<br>");
-
-    content.appendChild(title);
-    content.appendChild(divider);
-    content.appendChild(message);
-
-    if (result.isLong) {
-
-        const button = document.createElement("button");
-
-        button.className = "read-more";
-
-        button.textContent = "Read more ✦";
-
-        button.addEventListener("click", () => {
-
-            openModal(wish.name, wish.message);
-
-        });
-
-        content.appendChild(button);
-
-    }
-
-    card.appendChild(content);
-
-    return card;
-
-}
-
-async function loadWishes() {
-
-    const { data, error } = await supabaseClient
-        .from("wishes")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-    if (error) {
-
-        console.error(error);
-
-        return;
-
-    }
-
-    wishList.innerHTML = "";
-
-    data.forEach(wish => {
-
-        wishList.appendChild(createWishCard(wish));
-
-    });
-
-}
-
-async function sendNewWish() {
 
     const name = document.getElementById("wishName").value.trim();
 
     const message = document.getElementById("wishMessage").value.trim();
 
-    const status = document.getElementById("wishStatus");
 
-    if (!name || !message) {
+    if(!name || !message){
 
-        status.innerText =
-            "Hãy cho mình biết tên và lời chúc của bồ nhé!";
+        document.getElementById("wishStatus").innerText =
+        "Hãy cho mình biết tên và lời chúc của bồ nhé!";
 
         return;
 
     }
+
 
     const { error } = await supabaseClient
         .from("wishes")
-        .insert([{
-            name,
-            message
-        }]);
+        .insert([
+            {
+                name: name,
+                message: message
+            }
+        ]);
 
-    if (error) {
+
+
+    if(error){
 
         console.error(error);
 
-        status.innerText =
-            "Oops, chưa gửi được lời chúc, bồ thử lại nha.";
+        document.getElementById("wishStatus").innerText =
+        "Oops, chưa gửi được lời chúc, bồ thử lại nha.";
 
+    } else {
+
+
+        document.getElementById("wishStatus").innerText =
+        "Cảm ơn bồ đã trở thành một trong những bông hoa trên ngọn đồi của Wonwoo";
+
+
+        document.getElementById("wishName").value = "";
+        document.getElementById("wishMessage").value = "";
+        
+        loadWishes();
+
+    }
+
+
+});
+
+
+}
+async function loadWishes(){
+
+    const { data, error } = await supabaseClient
+        .from("wishes")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+
+    if(error){
+
+        console.error(error);
         return;
 
     }
 
-    status.innerText =
-        "Cảm ơn bồ đã trở thành một trong những bông hoa trên ngọn đồi của Wonwoo";
 
-    document.getElementById("wishName").value = "";
+    const wishList = document.getElementById("wishList");
 
-    document.getElementById("wishMessage").value = "";
+    wishList.innerHTML = "";
 
-    loadWishes();
 
-}
+    data.forEach(wish => {
 
-if (sendWish) {
+    const result = createPreview(wish.message);
 
-    sendWish.addEventListener("click", sendNewWish);
+    wishList.innerHTML += `
+    <div class="wish-card">
 
-}
+        <div class="wish-content">
 
-if (closeBtn) {
+            <h3>${escapeHtml(wish.name)}</h3>
 
-    closeBtn.addEventListener("click", closeModal);
+            <span class="wish-divider">✦</span>
 
-}
+            <div class="wish-message">
+                ${escapeHtml(result.preview)}
+            </div>
 
-if (modal) {
+            ${
+                result.isLong
+                ? `<button class="read-more"
+                        data-name="${escapeHtml(wish.name)}"
+                        data-message="${escapeHtml(wish.message)}">
+                        Read more ✦
+                   </button>`
+                : ""
+            }
 
-    modal.addEventListener("click", (e) => {
+        </div>
 
-        if (e.target === modal) {
+    </div>
+    `;
+});
+document.querySelectorAll(".read-more").forEach(btn => {
 
-            closeModal();
+    btn.addEventListener("click", () => {
 
-        }
+        document.getElementById("modalName").textContent =
+            btn.dataset.name;
+
+        document.getElementById("modalMessage").innerHTML =
+            btn.dataset.message.replace(/\n/g, "<br>");
+
+        document.getElementById("wishModal").classList.add("active");
 
     });
 
+});
 }
 
-document.addEventListener("keydown", (e) => {
+const modal = document.getElementById("wishModal");
 
-    if (e.key === "Escape") {
+const closeBtn = document.getElementById("closeWish");
 
-        closeModal();
+closeBtn.onclick = () => {
+
+    modal.classList.remove("active");
+
+};
+
+modal.onclick = (e) => {
+
+    if (e.target === modal) {
+
+        modal.classList.remove("active");
 
     }
 
-});
-console.log("Chuẩn bị gọi loadWishes");
+};
+
 loadWishes();
-console.log("version test");
