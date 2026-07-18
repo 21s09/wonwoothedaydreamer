@@ -100,7 +100,7 @@
 
     flex-direction:column;
 
-    justify-content:flex-start;
+    justify-content:center;
 
     align-items:center;
 
@@ -117,9 +117,25 @@
 
     align-items:center;
 
-    justify-content:flex-start;
+    justify-content:center;
 
     text-align:center;
+
+}
+
+.wish-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    width:70%;
 
 }
 
@@ -369,7 +385,7 @@
 
     display:none;
 
-    justify-content:flex-start;
+    justify-content:center;
 
     align-items:center;
 
