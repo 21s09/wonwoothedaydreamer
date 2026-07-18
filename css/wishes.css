@@ -24,7 +24,6 @@
     box-sizing:border-box;
     text-align:center;
     background:url("../assets/image/icon-02.svg") center/contain no-repeat;
-    filter:drop-shadow(0 10px 20px rgba(0,0,0,.08));
     transition:.3s;
 }
 
@@ -37,10 +36,8 @@
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-
     width:70%;
     height:62%;
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -58,20 +55,18 @@ margin-top:-5px
 
 .wish-divider{
     display:block;
-    margin:10px 10px;
+    margin:10px 0px;
     font-size:20px;
     color:var(--pink);
     font-family:serif;
 }
 
 .wish-message{
-    display:block;
-
+    display:block; margin-top:-20px;
     font-family:var(--font-title), East Sea Dokdo;
     font-size:20px;
     line-height:1.35;
     color:var(--purple);
-
     white-space:pre-line;
     word-break:break-word;
 }
