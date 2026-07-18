@@ -358,3 +358,81 @@
     white-space: pre-line; margin-top: -10px;
 
 }
+
+.read-more{
+
+    margin-top:12px;
+
+    border:none;
+
+    background:none;
+
+    color:var(--pink);
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-family:inherit;
+
+}
+
+.wish-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:9999;
+
+}
+
+.wish-modal.active{
+
+    display:flex;
+
+}
+
+.wish-modal-box{
+
+    width:min(700px,90vw);
+
+    max-height:80vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    position:relative;
+
+}
+
+#closeWish{
+
+    position:absolute;
+
+    top:15px;
+
+    right:20px;
+
+    border:none;
+
+    background:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
