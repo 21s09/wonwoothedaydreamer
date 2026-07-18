@@ -140,8 +140,8 @@ document.querySelectorAll(".read-more").forEach(btn => {
         document.getElementById("modalName").textContent =
             btn.dataset.name;
 
-        document.getElementById("modalMessage").textContent =
-            btn.dataset.message;
+        document.getElementById("modalMessage").innerHTML =
+            btn.dataset.message.replace(/\n/g, "<br>");
 
         document.getElementById("wishModal").classList.add("active");
 
