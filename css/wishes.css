@@ -100,7 +100,7 @@
 
     flex-direction:column;
 
-    justify-content:center;
+    justify-content:flex-start;
 
     align-items:center;
 
@@ -117,25 +117,9 @@
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:flex-start;
 
     text-align:center;
-
-}
-
-.wish-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    width:70%;
 
 }
 
@@ -385,7 +369,7 @@
 
     display:none;
 
-    justify-content:center;
+    justify-content:flex-start;
 
     align-items:center;
 
