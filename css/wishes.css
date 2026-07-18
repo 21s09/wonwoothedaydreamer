@@ -505,9 +505,9 @@
 
     transform:translate(-50%,-50%);
 
-    width:52%;
+    width:60%;
 
-    height:54%;
+    height:68%;
 
     overflow-y:auto;
 
@@ -528,9 +528,9 @@
 
 #modalMessage{
 
-    font-size:22px;
+    font-size:20px;
 
-    line-height:1.45;
+    line-height:1;
 
 }
 .wish-modal{
@@ -560,7 +560,7 @@
 /* Thanh cuộn */
 .modal-content::-webkit-scrollbar{
 
-    width:5px;
+    width:2px;
 
 }
 
