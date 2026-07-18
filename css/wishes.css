@@ -200,7 +200,10 @@ margin-top:-5px;
     transform:translate(-50%,-50%);
 
     width:60%;
-    height:65%;
+    inset:18% 14% 16% 14%;
+    transform:none;
+    left:auto;
+    top:auto;
 
     display:flex;
     flex-direction:column;
@@ -294,4 +297,26 @@ margin-top:-5px;
 @media (max-width:480px){
     .wish-card{flex:0 0 100%;}
     .wish-form{padding:30px 24px;}
+}
+
+@media (max-width:1024px){
+
+    .wish-card{
+        flex:0 0 340px;
+    }
+
+    .wish-content{
+        width:75%;
+        height:68%;
+        margin-top:0;
+    }
+
+    .wish-card h3{
+        font-size:24px;
+    }
+
+    .wish-message{
+        font-size:18px;
+        line-height:1.3;
+    }
 }
