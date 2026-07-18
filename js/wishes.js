@@ -15,6 +15,9 @@ async function loadWishes() {
         return;
     }
 
+    // phần code phía dưới giữ nguyên
+}
+
     const wishList = document.getElementById("wishList");
 
     console.log("wishList:", wishList);
