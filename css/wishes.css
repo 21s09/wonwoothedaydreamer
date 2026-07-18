@@ -39,15 +39,15 @@
     transform:translate(-50%,-50%);
 
     width:70%;
-    height:60%;
+    height:62%;
 
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
     text-align:center;
 }
-
 .wish-card h3{
     margin:10px 0 0px;
     font-family:var(--font-title), East Sea Dokdo;
@@ -74,18 +74,22 @@
 
     white-space:pre-line;
     word-break:break-word;
-
-    max-height:220px;
-    overflow:hidden;
 }
 .read-more{
-    margin-top:14px;
+    margin-top:16px;
+
     border:none;
     background:none;
+
     color:var(--pink);
+
     cursor:pointer;
-    font:inherit;
-       flex-shrink:0;
+
+    font-size:16px;
+
+    font-family:inherit;
+
+    flex-shrink:0;
 }
 
 /* ==========================================================================
