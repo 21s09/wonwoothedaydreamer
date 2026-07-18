@@ -150,20 +150,25 @@ document.querySelectorAll(".read-more").forEach(btn => {
 });
 }
 
+const modal = document.getElementById("wishModal");
 
-loadWishes();
-document.getElementById("closeWish").addEventListener("click", () => {
+const closeBtn = document.getElementById("closeWish");
 
-    document.getElementById("wishModal").classList.remove("active");
+closeBtn.onclick = () => {
 
-});
+    modal.classList.remove("active");
 
-document.getElementById("wishModal").addEventListener("click", e => {
+};
 
-    if (e.target.id === "wishModal") {
+modal.onclick = (e) => {
 
-        e.currentTarget.classList.remove("active");
+    if (e.target === modal) {
+
+        modal.classList.remove("active");
 
     }
 
-});
+};
+
+loadWishes();
+
