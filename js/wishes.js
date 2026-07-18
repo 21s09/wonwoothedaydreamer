@@ -229,5 +229,5 @@ document.addEventListener("keydown", (e) => {
     }
 
 });
-
+console.log("Chuẩn bị gọi loadWishes");
 loadWishes();
