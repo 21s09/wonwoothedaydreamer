@@ -151,24 +151,21 @@ document.querySelectorAll(".read-more").forEach(btn => {
 }
 
 const modal = document.getElementById("wishModal");
-
 const closeBtn = document.getElementById("closeWish");
 
-closeBtn.onclick = () => {
+if (modal && closeBtn) {
 
-    modal.classList.remove("active");
-
-};
-
-modal.onclick = (e) => {
-
-    if (e.target === modal) {
-
+    closeBtn.onclick = () => {
         modal.classList.remove("active");
+    };
 
-    }
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+        }
+    };
 
-};
+}
 
 loadWishes();
 
