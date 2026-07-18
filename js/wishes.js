@@ -1,17 +1,33 @@
-console.log("Wish JS loaded!");
+async function loadWishes() {
 
-const sendWish = document.getElementById("sendWish");
-const wishList = document.getElementById("wishList");
+    console.log("loadWishes chạy");
 
-const modal = document.getElementById("wishModal");
-const modalName = document.getElementById("modalName");
-const modalMessage = document.getElementById("modalMessage");
-const closeBtn = document.getElementById("closeWish");
+    const { data, error } = await supabaseClient
+        .from("wishes")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-function escapeHtml(text = "") {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
+    console.log("error:", error);
+    console.log("data:", data);
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    const wishList = document.getElementById("wishList");
+
+    console.log("wishList:", wishList);
+
+    wishList.innerHTML = "";
+
+    data.forEach(wish => {
+        console.log("wish:", wish);
+
+        wishList.appendChild(createWishCard(wish));
+    });
+
+    console.log("Hoàn thành");
 }
 
 function createPreview(text, maxLength = 180) {
