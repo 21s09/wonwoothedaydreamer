@@ -1,3 +1,23 @@
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function createPreview(text, maxLength = 220) {
+    if (text.length <= maxLength) {
+        return {
+            preview: text,
+            isLong: false
+        };
+    }
+
+    return {
+        preview: text.slice(0, maxLength) + "...",
+        isLong: true
+    };
+}
+
 console.log("Wish JS loaded!");
 
 const sendWish = document.getElementById("sendWish");
@@ -83,25 +103,51 @@ async function loadWishes(){
 
     data.forEach(wish => {
 
-wishList.innerHTML += `
-<div class="wish-card">
+    const result = createPreview(wish.message);
 
-    <div class="wish-content">
+    wishList.innerHTML += `
+    <div class="wish-card">
 
-        <h3>${wish.name}</h3>
+        <div class="wish-content">
 
-        <span class="wish-divider">✦</span>
+            <h3>${escapeHtml(wish.name)}</h3>
 
-        <div class="wish-message">
-            ${wish.message}
+            <span class="wish-divider">✦</span>
+
+            <div class="wish-message">
+                ${escapeHtml(result.preview)}
+            </div>
+
+            ${
+                result.isLong
+                ? `<button class="read-more"
+                        data-name="${escapeHtml(wish.name)}"
+                        data-message="${escapeHtml(wish.message)}">
+                        Read more ✦
+                   </button>`
+                : ""
+            }
+
         </div>
 
     </div>
-
-</div>
-`;
+    `;
 });
+document.querySelectorAll(".read-more").forEach(btn => {
 
+    btn.addEventListener("click", () => {
+
+        document.getElementById("modalName").textContent =
+            btn.dataset.name;
+
+        document.getElementById("modalMessage").textContent =
+            btn.dataset.message;
+
+        document.getElementById("wishModal").classList.add("active");
+
+    });
+
+});
 }
 
 
