@@ -178,8 +178,7 @@ margin-top:-5px
     display:none;
     justify-content:center;
     align-items:center;
-    background:rgba(30,20,45,.45);
-    backdrop-filter:blur(8px);
+    background:var(--purple);
     z-index:9999;
 }
 
@@ -240,9 +239,9 @@ margin-top:-5px
     word-break:break-word;
 }
 
-.modal-content::-webkit-scrollbar{width:4px;}
+.modal-content::-webkit-scrollbar{width:2px;}
 .modal-content::-webkit-scrollbar-thumb{
-    background:rgba(125,105,255,.4);
+    background:var(--bg);
     border-radius:999px;
 }
 
