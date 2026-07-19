@@ -36,8 +36,8 @@
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-    width:70%;
-    height:60%;
+    width:68%;
+    height:68%;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -71,8 +71,8 @@ margin-top:-5px;
     word-break:break-word;
 }
 .read-more{
-    margin-top:20px;
-
+    margin-top:12px;
+   margin-bottom:8px;
     border:none;
     background:none;
 
@@ -194,24 +194,19 @@ margin-top:-5px;
 .modal-content{
     position:absolute;
 
+    top:18%;
     left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
+    transform:translateX(-50%);
 
     width:60%;
-    inset:18% 14% 16% 14%;
-    transform:none;
-    left:auto;
-    top:auto;
+    height:66%;
 
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:flex-start;
 
     overflow:hidden;
-
-    padding-top:0;
 }
 .modal-message-wrapper{
     width:100%;
