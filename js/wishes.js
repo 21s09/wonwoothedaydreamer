@@ -95,8 +95,6 @@ async function loadWishes(){
 
     }
     
- // Cập nhật số lượng lời chúc //
-    document.getElementById("wishTotal").textContent = data.length;
 
     const wishList = document.getElementById("wishList");
 
